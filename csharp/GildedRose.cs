@@ -32,6 +32,12 @@ namespace csharp
 					item.SellIn--;
 				}
 
+				if (item.Name == "Conjured Mana Cake" && item.Quality > 0)
+				{
+					item.Quality--;
+
+				}
+
 				SetQualityItemWithLateSales(item);
 			}
 		}
@@ -58,46 +64,57 @@ namespace csharp
 						}
 					}
 				}
-			}
-			else
-			{
-				if (item.SellIn > 0 && item.Quality < 50)
+				else
 				{
-					item.Quality++;
+					if (item.SellIn > 0  && item.Quality < 50)
+					{
+						item.Quality++;
+					}
 				}
 			}
+
 		}
 
 		private static void SetQualityItemWithLateSales(Item item)
 		{
 			if (item.SellIn < 0)
 			{
-				if (item.Name != "Aged Brie")
+				if (item.Name != "Conjured Mana Cake")
 				{
-					if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+
+					if (item.Name != "Aged Brie")
 					{
-						if (item.Quality > 0)
+						if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
 						{
-							if (item.Name != "Sulfuras, Hand of Ragnaros")
+							if (item.Quality > 0)
 							{
-								item.Quality--;
+								if (item.Name != "Sulfuras, Hand of Ragnaros")
+								{
+									item.Quality--;
+								}
 							}
+						}
+						else
+						{
+							item.Quality -= item.Quality;
 						}
 					}
 					else
 					{
-						item.Quality -= item.Quality;
+						if (item.Quality < 50)
+						{
+							item.Quality++;
+						}
 					}
 				}
 				else
 				{
-					if (item.Quality < 50)
+					if (item.Quality > 0)
 					{
-						item.Quality++;
+						item.Quality -= 2;
 					}
 				}
 			}
 		}
-
 	}
 }
