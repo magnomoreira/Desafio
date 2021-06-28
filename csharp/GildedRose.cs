@@ -46,33 +46,22 @@ namespace csharp
 		{
 			if (item.Quality < 50)
 			{
-				if (item.Name != "Aged Brie")
-				{
-					item.Quality++;
+				item.Quality++;
 
-					if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+				if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+				{
+					if (item.SellIn < 11 && item.Quality < 50)
 					{
-						if (item.SellIn < 11 && item.Quality < 50)
-						{
-							item.Quality++;
+						item.Quality++;
 
-						}
-
-						if (item.SellIn < 6 && item.Quality < 50)
-						{
-							item.Quality++;
-						}
 					}
-				}
-				else
-				{
-					if (item.SellIn > 0  && item.Quality < 50)
+
+					if (item.SellIn < 6 && item.Quality < 50)
 					{
 						item.Quality++;
 					}
 				}
 			}
-
 		}
 
 		private static void SetQualityItemWithLateSales(Item item)

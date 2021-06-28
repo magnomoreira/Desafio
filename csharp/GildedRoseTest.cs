@@ -42,11 +42,11 @@ namespace csharp
 		[Test]
 		public void CaseAgedBrie1()
 		{
-			IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 10, Quality = 50 } };
+			IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = -1, Quality = 50 } };
 			GildedRose app = new GildedRose(Items);
 			app.UpdateQuality();
 
-			Assert.AreEqual(9, Items[0].SellIn);
+			Assert.AreEqual(-2, Items[0].SellIn);
 			Assert.AreEqual(50, Items[0].Quality);
 
 		}
