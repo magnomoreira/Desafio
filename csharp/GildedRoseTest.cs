@@ -42,12 +42,12 @@ namespace csharp
 		[Test]
 		public void CaseAgedBrie1()
 		{
-			IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 10, Quality = 49 } };
+			IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = -1, Quality = 50 } };
 			GildedRose app = new GildedRose(Items);
 			app.UpdateQuality();
 
-			Assert.AreEqual(9, Items[0].SellIn);
-			Assert.AreEqual(49, Items[0].Quality);
+			Assert.AreEqual(-2, Items[0].SellIn);
+			Assert.AreEqual(50, Items[0].Quality);
 
 		}
 
@@ -121,6 +121,31 @@ namespace csharp
 
 			Assert.AreEqual(0, Items[0].SellIn);
 			Assert.AreEqual(80, Items[0].Quality);
+
+		}
+
+		[Test]
+		public void CaseConjured0()
+		{
+			IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = -1, Quality = 10 } };
+			GildedRose app = new GildedRose(Items);
+			app.UpdateQuality();
+
+			Assert.AreEqual("Conjured Mana Cake", Items[0].Name);
+			Assert.AreEqual(6, Items[0].Quality);
+			Assert.AreEqual(-2, Items[0].SellIn);
+		}
+
+		[Test]
+		public void CaseConjured1()
+		{
+			IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 10, Quality = 10 } };
+			GildedRose app = new GildedRose(Items);
+			app.UpdateQuality();
+
+			Assert.AreEqual("Conjured Mana Cake", Items[0].Name);
+			Assert.AreEqual(9, Items[0].SellIn);
+			Assert.AreEqual(8, Items[0].Quality);
 
 		}
 	}
