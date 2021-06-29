@@ -68,19 +68,19 @@ namespace csharp
 		{
 			if (item.SellIn < 0)
 			{
-				if (item.Name != "Conjured Mana Cake")
+				if (item.Name == "Conjured Mana Cake" && item.Quality > 0)
 				{
-
+					item.Quality -= 2;
+				}
+				else
+				{
 					if (item.Name != "Aged Brie")
 					{
 						if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
 						{
-							if (item.Quality > 0)
+							if (item.Quality > 0 && item.Name != "Sulfuras, Hand of Ragnaros")
 							{
-								if (item.Name != "Sulfuras, Hand of Ragnaros")
-								{
-									item.Quality--;
-								}
+								item.Quality--;
 							}
 						}
 						else
@@ -94,13 +94,6 @@ namespace csharp
 						{
 							item.Quality++;
 						}
-					}
-				}
-				else
-				{
-					if (item.Quality > 0)
-					{
-						item.Quality -= 2;
 					}
 				}
 			}
